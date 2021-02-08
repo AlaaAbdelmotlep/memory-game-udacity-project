@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Memory Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assist/css/style.css">
+    <!--<script type="text/javascript" src="assist/js/all.js"></script>-->
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+        <section class="top-header">
+        	<ul class="star">
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        	</ul>
+
+        	<span class="moves">3</span> Move
+            
+            <div class="timer">
+            </div>
+
+            <div class="restart" onclick=startGame()>
+        		<i class="fa fa-repeat"></i>
+        	</div>
+        </section>
+        <ul class="grid" id="card-grid">
+           <li class="card" data-name="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" data-name="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card match" data-name="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" data-name="bolt" >
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card" data-name="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+            <li class="card match" data-name="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" data-name="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card" data-name="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" data-name="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" data-name="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card" data-name="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card" data-name="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card open show" data-name="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card" data-name="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" data-name="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card" data-name="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+        <div id="popup" class="con-massage">
+            <div class="popup-massage">
+                <h2>Congratulations</h2>
+                <a class="close" href=# >×</a>
+                <div class="popup-massage2">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating:  <span id=starRating></span></p>
+                </div>
+                <button id="play-again" onclick="playAgain()">Play again
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="assist/js/myscript.js"></script>
+</body>
+</html>

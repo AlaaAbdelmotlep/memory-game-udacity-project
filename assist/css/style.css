@@ -1,0 +1,319 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #ffffff;
+	font-size: 16px;
+}
+
+h1 {
+	font-family: sans-serif;
+
+}
+
+ul {
+	margin: 0;
+	padding: 23px;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+header {
+	margin: 0;
+	padding: 0;
+}
+
+.grid {
+	width: 85%;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    border-radius: 4px;
+    box-shadow: 5px 2px 20px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.grid .card {
+	height: 50px;
+	width: 50px;
+	background: #141214;
+	/*font-size=0 to make it dosn't appare*/
+	font-size: 0;
+	color: #0c262e;
+	border-radius: 5px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px;
+}
+
+.fa-star {
+	color: #FFD700;
+}
+
+.grid .card.open {
+	transform: rotateY(0);
+	/*without backface card wan't display*/
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	background: #1f94b8;
+	cursor: default;
+	animation-name: flipcard;
+	animation-duration: .75s;
+}
+
+.grid .card.show {
+	/*because the defult was 0px*/
+	font-size: 33px;
+}
+
+.grid .card.match {
+	cursor: default;
+	background: #30e639;
+	font-size: 33px;
+	animation-name: matchedcard;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.grid .card.unmatched {
+	animation-name: unmatchedcard;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #f22d1b;
+}
+
+.grid .card.disabled {
+	/*to avoid click over it again*/
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+/*style the top-header*/
+.top-header {
+	text-align: left;
+    margin: 0 0 10px 0;
+}
+
+.top-header .star {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 0;
+}
+
+.top-header .star li {
+	list-style: none;
+	display: inline-block;
+}
+
+.top-header .restart {
+	float: right;
+	cursor: pointer;
+	margin-left: 30px;
+}
+
+
+/*styles for congratulations massage*/
+
+/*to creat popup massage*/
+.con-massage {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.7);
+	transition: opacity 500ms;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
+}
+
+/*target selector ,, highlight active html*/
+.con-massage:target {
+	visibility: visible;
+	opacity: 1;
+}
+
+.popup-massage {
+	margin: 100px auto;
+	padding: 20px;
+	background: #ffffff;
+	border-radius: 5px;
+	width: 85%;
+	height: 366px;
+	position: relative;
+	transition: all 5s ease-in-out;
+}
+
+.popup-massage2 {
+  	text-align: center;
+ }
+
+.popup-massage h2 {
+	margin:auto;
+	text-align: center;
+	color: #333;
+	font-size: 50px;
+	 margin-bottom: 60px;
+}
+
+.popup-massage .close {
+	position: absolute;
+    top: 39px;
+	right: 30px;
+	transition: all 5s ease-in-out;
+	/*comment it now to see the effect*/
+	/*transition: all 200ms;*/
+	font-size: 30px;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333;
+}
+
+.show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+#starRating li {
+	display: inline-block;
+}
+
+#play-again {
+	background-color: #141214;
+	padding: 10px;
+	font-size: 25px;
+	display: block;
+	cursor: pointer;
+	margin: 0 auto;
+	width: 30%;
+	color: #ffffff;
+	border-radius: 5px;
+}
+
+/* animations */
+@keyframes flipcard {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(400px);
+	}
+}
+
+/*match*/
+@keyframes matchedcard {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, .95, 1);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+/*unmatch*/
+@keyframes unmatchedcard {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.2, 1.2, 1.2);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@media (max-width: 320px) {
+	.grid {
+		width: 85%;
+	}
+
+	.grid .card {
+		height: 4.7rem;
+		width: 4.7rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.container {
+		font-size: 22px;
+	}
+
+	.grid {
+		width: 660px;
+		height: 680px;
+	}
+
+	.grid .card {
+		height: 125px;
+		width: 125px;
+	}
+
+	.popup-massage {
+		width: 60%;
+	}
+}
